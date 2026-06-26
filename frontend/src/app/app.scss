@@ -1,0 +1,57 @@
+:host {
+  display: block;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1f2933;
+}
+
+.test-banner {
+  background: #b91c1c;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  letter-spacing: 0.02em;
+}
+
+.app-header {
+  padding: 1.5rem 2rem 0.5rem;
+
+  h1 {
+    margin: 0;
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    margin: 0.25rem 0 0;
+    color: #616e7c;
+  }
+}
+
+.app-main {
+  padding: 1rem 2rem 2rem;
+}
+
+.card {
+  border: 1px solid #e4e7eb;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  max-width: 480px;
+
+  h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+}
+
+.status {
+  font-weight: 600;
+
+  &--up { color: #047857; }
+  &--down { color: #b91c1c; }
+  &--unknown { color: #9aa5b1; }
+}
+
+.hint {
+  color: #616e7c;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: pa
+      POSTGRES_USER: pa
+      POSTGRES_PASSWORD: pa
+    ports:
+      - "5432:5432"
+    volumes:
+      - pa-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pa -d pa"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/pa
+      SPRING_DATASOURCE_USERNAME: pa
+      SPRING_DATASOURCE_PASSWORD: pa
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  front:
+    build:
+      context: ./frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+
+volumes:
+  pa-db:

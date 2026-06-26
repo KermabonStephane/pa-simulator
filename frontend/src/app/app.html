@@ -1,0 +1,28 @@
+<div class="test-banner" role="alert">
+  ⚠️ ENVIRONNEMENT DE TEST — aucune valeur fiscale, données fictives uniquement.
+</div>
+
+<header class="app-header">
+  <h1>{{ title() }}</h1>
+  <p class="subtitle">Simulateur de Plateforme Agréée de facturation électronique</p>
+</header>
+
+<main class="app-main">
+  <section class="card">
+    <h2>État de l'API</h2>
+    <p>
+      Statut :
+      @switch (apiStatus()) {
+        @case ('UP') { <span class="status status--up">opérationnelle</span> }
+        @case ('DOWN') { <span class="status status--down">injoignable</span> }
+        @default { <span class="status status--unknown">vérification…</span> }
+      }
+    </p>
+    <p class="hint">
+      Documentation de l'API :
+      <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">Swagger UI</a>
+    </p>
+  </section>
+
+  <router-outlet />
+</main>
